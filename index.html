@@ -4,7 +4,7 @@ body{background:var(--paper);color:var(--ink);font:14px/1.45 Inter,sans-serif;-w
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .stale{background:var(--ink);color:var(--paper);padding:7px 14px;font-size:11.5px;text-align:center}
-.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(14px,3vw,36px) 90px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 max(clamp(14px,3vw,36px),env(safe-area-inset-right)) 90px max(clamp(14px,3vw,36px),env(safe-area-inset-left))}
 /* masthead */
 .mast{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:12px 22px;
  padding:clamp(16px,3vh,30px) 0 12px;border-bottom:2px solid var(--ink)}
@@ -20,7 +20,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .grid{display:grid;gap:8px;grid-template-columns:repeat(4,1fr);padding-top:4px}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.grid{grid-template-columns:1fr}}
-.phase{grid-column:1/-1;display:flex;justify-content:space-between;gap:8px;
+.phase{grid-column:1/-1;width:100%;box-sizing:border-box;min-width:0;display:flex;justify-content:space-between;gap:8px;
  font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
  padding:5px 8px;border-radius:6px;margin:10px 0 2px}
 .phase b{font-weight:600}
@@ -78,7 +78,17 @@ button.c:hover{border-color:var(--ink);box-shadow:0 2px 10px #11111114}
 .sharepop input{border:1px solid var(--cardline);padding:9px 11px;font:inherit;flex:1;min-width:140px;border-radius:8px}
 .sharepop .cp{background:var(--ink);color:var(--card);padding:9px 14px;border-radius:8px;font-weight:600}
 .sharepop .cp.done{background:var(--ok)}
-@media(max-width:520px){.mast{flex-direction:column}.fab{align-self:flex-end}}
+/* narrow (2-col tablet + phone): float the action button out of the header so it can't blow out the masthead */
+@media(max-width:1000px){
+ .fab{position:fixed;right:calc(24px + env(safe-area-inset-right));bottom:calc(24px + env(safe-area-inset-bottom));z-index:10;align-self:auto}
+ .sharepop{top:auto;bottom:calc(100% + 8px)}
+ body{padding-bottom:calc(90px + env(safe-area-inset-bottom))}
+ /* 2-col: keep each phase header grouped above its own matches (SF block, then 3rd+Final block) */
+ .phase.sf-h{order:1}.grid>.c.rd3{order:2}.phase.third-h{order:3}.phase.final-h{order:4}.grid>.c.rd4.third{order:5}.grid>.c.rd4.fin{order:6}}
+@media(max-width:520px){.mast{flex-direction:column}
+ /* single column: each phase header on its own full-width row, interleaved directly above its card */
+ .phase.sf-h{grid-column:1/-1}
+ .grid>.c.rd4.third{order:4}.phase.final-h{order:5}}
 /* flow overlay */
 .flow{position:fixed;inset:0;background:var(--paper);z-index:50;display:flex;flex-direction:column;min-height:100dvh}
 .fprog{height:3px;background:var(--line)}.fprog i{display:block;height:100%;background:var(--accent);transition:width .25s}
