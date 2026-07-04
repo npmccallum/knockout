@@ -352,7 +352,8 @@ function cardHTML(i,cmp){
 
  let t='';
  for(const s of[0,1]){const n=names[s];let tc='';
-  if(done)tc=s===WC.S.results[i]?'win':'lose';
+  if(done){tc=s===WC.S.results[i]?'win':'lose';
+   if(!cmp&&WC.S.picks[i]!==null)tc=s===WC.S.picks[i]?'win':'fade';}
   else if(!cmp&&WC.S.picks[i]!==null)tc=(WC.S.picks[i]===s)?'pick':'fade';
   let scoreTxt='',scCls='sc';
   if(done&&sp){scoreTxt=(s===0?sp.a:sp.b)+(sp.p?' ('+sp.p[s]+')':'');}
