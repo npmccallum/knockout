@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>The Knockout — WC26 bracket</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;600&display=swap" rel="stylesheet"><style>:root{--paper:#F5F4F1;--ink:#141414;--accent:#D2600C;--sub:#4b4b4b;--muted:#8d8d89;--line:#E1E0DC;--card:#FFFFFF;--cardline:#CFCEC8;--settled:#EBEAE5;--lose:#B3B2AC;--ph0:#E8E7E2;--pht0:#4e4d48;--ph1:#D2D1CB;--pht1:#3c3b36;--ph2:#AFAEA8;--pht2:#232320;--ph3:#7C7B76;--pht3:#f4f4f2;--phT:#57564F;--phtT:#F1F0EA;--fin2:#E8933F;--fintext:#FDF3EA;--fincard:#FBF0E4;--finline:#E8C7A0;--ok:#2F7D46;--bad:#C8102E}
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>The Knockout — WC26 bracket</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;600&display=swap" rel="stylesheet"><style>:root{--paper:#F5F4F1;--ink:#141414;--accent:#D2600C;--sub:#4b4b4b;--muted:#8d8d89;--line:#E1E0DC;--card:#FFFFFF;--cardline:#CFCEC8;--settled:#EBEAE5;--lose:#B3B2AC;--ph0:#E8E7E2;--pht0:#4e4d48;--ph1:#D2D1CB;--pht1:#3c3b36;--ph2:#AFAEA8;--pht2:#232320;--ph3:#7C7B76;--pht3:#f4f4f2;--phT:#57564F;--phtT:#F1F0EA;--fin2:#E8933F;--fintext:#FDF3EA;--fincard:#FBF0E4;--finline:#E8C7A0;--ok:#2F7D46;--bad:#C8102E;--needed:#E8A23D;--neededtext:#3a2705}
 *{box-sizing:border-box}html,body{margin:0}
 body{background:var(--paper);color:var(--ink);font:14px/1.45 Inter,sans-serif;-webkit-font-smoothing:antialiased}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
@@ -9,20 +9,18 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .mast{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:12px 22px;
  padding:clamp(16px,3vh,30px) 0 12px;border-bottom:2px solid var(--ink)}
 .mast .left{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 22px;min-width:0}
-.mast h1{margin:0;font:400 clamp(26px,4vw,44px)/1 'Instrument Serif',serif;letter-spacing:-.015em}
+.mast h1{margin:0;font:400 clamp(30px,4vw,44px)/1 'Instrument Serif',serif;letter-spacing:-.015em}
 .mast h1 em{font-style:italic;color:var(--accent)}
 .mast .sub{color:var(--sub);font-size:13px}
 .mast .sub b{color:var(--ink)}
-.mast .score{font:400 clamp(22px,3vw,34px)/1 'Instrument Serif',serif}
-.mast .score small{font-size:.5em;color:var(--muted)}
 
 /* rounds */
-.grid{display:grid;gap:8px;grid-template-columns:repeat(4,1fr);padding-top:4px}
+.grid{display:grid;gap:8px;grid-template-columns:repeat(4,1fr);padding-top:8px}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.grid{grid-template-columns:1fr}}
+@media(max-width:340px){.grid{grid-template-columns:1fr}}
 .phase{grid-column:1/-1;width:100%;box-sizing:border-box;min-width:0;display:flex;justify-content:space-between;gap:8px;
  font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
- padding:5px 8px;border-radius:6px;margin:10px 0 2px}
+ padding:5px 8px;border-radius:6px;margin:8px 0 0}
 .phase b{font-weight:600}
 .phase.p0{background:var(--ph0);color:var(--pht0)}
 .phase.p1{background:var(--ph1);color:var(--pht1)}
@@ -30,42 +28,40 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .phase.sf-h{grid-column:span 2;background:var(--ph3);color:var(--pht3)}
 .phase.third-h{grid-column:span 1;background:var(--phT);color:var(--phtT)}
 .phase.final-h{grid-column:span 1;background:var(--accent);color:var(--fintext)}
-.c{display:flex;align-items:stretch;border:1px solid var(--cardline);background:var(--card);border-radius:6px;
+.c{display:flex;flex-direction:column;border:1px solid var(--cardline);background:var(--card);border-radius:6px;
  min-width:0;overflow:hidden;box-shadow:0 1px 3px #11111114}
 .c.settled{background:var(--settled);border-color:var(--line);box-shadow:none}
-.strip{flex:0 0 auto;width:18px;display:flex;align-items:center;justify-content:center;
- font-weight:800;font-size:12px}
 .sc.when{color:var(--muted);font-weight:400}
-.rd0 .strip{background:var(--ph0)}
-.rd1 .strip{background:var(--ph1)}
-.rd2 .strip{background:var(--ph2)}
-.rd3 .strip{background:var(--ph3)}
-.body{flex:1;min-width:0;padding:5px 8px}
+.body{flex:1;min-width:0;padding:4px 8px}
 .c.fin{background:var(--fincard);border-color:var(--finline)}
-.c.fin .strip{background:var(--accent)}
-.c.third .strip{background:var(--phT)}
 button.c{appearance:none;text-align:left;cursor:pointer;font:inherit;color:inherit;
  transition:border-color .12s,box-shadow .12s}
 button.c:hover{border-color:var(--ink);box-shadow:0 2px 10px #11111114}
 .c .t{display:grid;grid-template-columns:18px 1fr auto;gap:6px;align-items:baseline;width:100%;
- text-align:left;padding:2px 2px}
-.c .t .nm{font:600 14px/1.3 Inter,sans-serif;letter-spacing:-.005em;
+ text-align:left;padding:1px 2px}
+.c .t .nm{font:600 14px/1.2 Inter,sans-serif;letter-spacing:-.005em;
  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .c .t .sc{font-variant-numeric:tabular-nums;font-size:13px;color:var(--sub)}
 .c .t.win .sc{color:var(--ink);font-weight:600}
 .c .t.lose .nm{color:var(--lose)}
-.c .t.fade .nm{color:var(--lose)}
-.c .strip.mk-cor{background:var(--ok);color:var(--card)}
-.c .strip.mk-known{background:var(--cardline);color:#5c5648}
-.c .strip.mk-chosen{background:#141414;color:var(--card)}
-.c .strip.mk-needed{background:#E8A23D;color:#3a2705}
-.c .strip.mk-wro{background:var(--bad);color:var(--card)}
-.c .strip.mk-flip{background:#1B4F9C;color:var(--card)}
+.c .t.predicted .nm{opacity:.7}
 .c.feeder{box-shadow:0 0 0 2px #1B4F9C;position:relative;z-index:1}
 .c.selected{border-color:#1B4F9C}
-.flipbody{display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 8px}
-.flipbody .pfl{font-size:18px;line-height:1}
-.flipbody .pnm{font:600 14px/1.3 Inter,sans-serif;letter-spacing:-.005em}
+/* pick bar — horizontal footer replacing the old left strip; always rendered, never omitted */
+.pickbar{flex:0 0 auto;display:flex;align-items:center;gap:6px;padding:2px 8px;
+ font-size:11px;line-height:1.3;border-top:1px solid var(--line)}
+.pickbar .pbg{flex:0 0 auto;width:13px;text-align:center;font-weight:800;font-size:11px}
+.pickbar .pbfl{flex:0 0 auto;width:18px;font-size:13px;line-height:1}
+.pickbar .pbnm,.pickbar .pbtxt{flex:1;min-width:0;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rd0 .pickbar.pb-round{background:var(--ph0);color:var(--pht0)}
+.rd1 .pickbar.pb-round{background:var(--ph1);color:var(--pht1)}
+.rd2 .pickbar.pb-round{background:var(--ph2);color:var(--pht2)}
+.rd3 .pickbar.pb-round{background:var(--ph3);color:var(--pht3)}
+.c.third .pickbar.pb-round{background:var(--phT);color:var(--phtT)}
+.c.fin .pickbar.pb-round{background:var(--accent);color:var(--fintext)}
+.pickbar.pb-needed{background:var(--needed);color:var(--neededtext)}
+.pickbar.pb-cor{background:var(--ok);color:var(--card)}
+.pickbar.pb-wro{background:var(--bad);color:var(--card)}
 /* FAB — integrated into header */
 .fab{position:relative;flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
 .fab .main{background:var(--ink);color:var(--paper);font-weight:600;font-size:14px;padding:11px 20px;border-radius:999px;
@@ -85,8 +81,9 @@ button.c:hover{border-color:var(--ink);box-shadow:0 2px 10px #11111114}
  body{padding-bottom:calc(90px + env(safe-area-inset-bottom))}
  /* 2-col: keep each phase header grouped above its own matches (SF block, then 3rd+Final block) */
  .phase.sf-h{order:1}.grid>.c.rd3{order:2}.phase.third-h{order:3}.phase.final-h{order:4}.grid>.c.rd4.third{order:5}.grid>.c.rd4.fin{order:6}}
-@media(max-width:520px){.mast{flex-direction:column}
- /* single column: each phase header on its own full-width row, interleaved directly above its card */
+@media(max-width:520px){.mast{flex-direction:column}}
+@media(max-width:340px){
+ /* single column (only below phone width): each phase header on its own full-width row, interleaved directly above its card */
  .phase.sf-h{grid-column:1/-1}
  .grid>.c.rd4.third{order:4}.phase.final-h{order:5}}
 /* flow overlay */
@@ -95,6 +92,7 @@ button.c:hover{border-color:var(--ink);box-shadow:0 2px 10px #11111114}
 .fhead{display:flex;justify-content:space-between;align-items:center;gap:10px;
  padding:12px clamp(14px,4vw,40px);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
 .fhead .x{font-size:20px;letter-spacing:0;color:var(--ink);padding:4px 10px}
+.fcur{text-align:center;font-size:12px;color:var(--muted);padding:2px 0 0}
 .fstage{flex:1;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;
  overflow-y:auto;overflow-x:hidden;user-select:none;-webkit-user-select:none;cursor:pointer}
 .fsplit{width:100%;table-layout:fixed;border-collapse:collapse;will-change:transform;position:relative;z-index:1}
@@ -206,7 +204,8 @@ function ingest(json){const map={};for(const m of json.matches)if(m.num>=73&&m.n
  S.feed=map;for(let i=0;i<32;i++)S.results[i]=winnerSide(map[i]||null);
  for(let i=0;i<16;i++){const m=map[i];S.r32[i]=m?[m.team1,m.team2]:null;}
  S.teamStats=buildTeamStats(json.matches);
- buildChronoRank();}
+ buildChronoRank();
+ invalidateStale();}
 
 function buildTeamStats(matches){
  const stats={};
@@ -270,18 +269,90 @@ const decMerged=i=>S.results[i]!==null?S.results[i]:S.picks[i];
 const decBits=p=>i=>bit(p,i);
 const decMaskedBits=v=>i=>S.results[i]!==null?S.results[i]:bit(v.picks,i);
 
-function eliminated(){const d=new Set();for(let i=0;i<32;i++){if(i===30)continue;
- if(S.results[i]!==null){const nm=namesUnder(i,decReal),l=nm[1-S.results[i]];if(l)d.add(l);}}return d;}
+// --- row / game / pick state model ---------------------------------------
+// Row state (per team slot, the two slots in a card are independent):
+//  unpredicted — nothing resolved yet (no real result, no pick anywhere upstream)
+//  predicted   — resolved, but only via a pick projection, not yet real
+//  confirmed   — resolved via a real result, but *this* match hasn't been decided
+//  won / lost  — this match decided, this row's team won/lost
+// sideKind: is the winner emerging from feederIdx grounded in a real result ('real'),
+// only a projection ('pick'), or not yet resolved at all (null)? A real result at
+// feederIdx means feederIdx's own two participants were themselves necessarily real
+// (an actual fixture can only occur between two real, already-qualified teams), so no
+// further recursion is needed once feederIdx's own decidedness is known.
+function sideKind(feederIdx,dec){const w=dec(feederIdx);if(w===null)return null;
+ return S.results[feederIdx]!==null?'real':'pick';}
+function rowState(i,s,dec,names){
+ let kind;
+ if(i<16){kind=names[s]?'real':null;}
+ else{kind=sideKind(immediateFeeders(i)[s],dec);}
+ if(kind===null)return 'unpredicted';
+ if(S.results[i]===null)return kind==='real'?'confirmed':'predicted';
+ return s===S.results[i]?'won':'lost';
+}
+// Game state (derived from a card's two row states):
+//  undetermined — either row is unpredicted
+//  predicted    — both rows resolved, but at least one is only 'predicted'
+//  confirmed    — both rows are 'confirmed', match not yet played
+//  decided      — both rows are won/lost
+function gameStateOf(r0,r1){
+ if(r0==='unpredicted'||r1==='unpredicted')return 'undetermined';
+ if(r0==='won'||r0==='lost')return 'decided';
+ if(r0==='predicted'||r1==='predicted')return 'predicted';
+ return 'confirmed';
+}
+// Pick state — what a specific bracket (yours while editing, or a shared link's) called
+// for this slot, independent of the game-state rows above:
+//  no-pick | needed | unknowable | made | correct | wrong | impossible
+// cardModel(i, view): view=null means "your own in-progress bracket"; view={maskCount,picks,name}
+// means "a shared/frozen bracket" (from parseHash). Same derivation either way — only the
+// source of `mine` (the pick's team name) differs.
+function cardModel(i,view){
+ const dec=view?decMaskedBits(view):decMerged;
+ const names=namesUnder(i,dec);
+ const r0=rowState(i,0,dec,names),r1=rowState(i,1,dec,names);
+ const gameSt=gameStateOf(r0,r1);
+ let pick;
+ if(view&&isMasked(i,view.maskCount)){
+  pick={state:'no-pick'};
+ }else if(gameSt==='undetermined'){
+  pick={state:'unknowable'};
+ }else{
+  const mine=view?namesUnder(i,decBits(view.picks))[bit(view.picks,i)]:S.pickName[i];
+  if(mine==null){
+   pick={state:gameSt==='decided'?'no-pick':'needed'};
+  }else{
+   const alive=names[0]===mine||names[1]===mine;
+   if(!alive)pick={state:'impossible',name:mine};
+   else if(gameSt!=='decided')pick={state:'made',name:mine};
+   else{const side=names[0]===mine?0:1;pick={state:side===S.results[i]?'correct':'wrong',name:mine};}
+  }
+ }
+ return{names,r0,r1,gameSt,pick};
+}
 
+// invalidateStale: clears S.picks[i] (the *active* side-index used to propagate a winner
+// forward) whenever it no longer matches the frozen S.pickName[i] — e.g. because an earlier
+// round's real result changed who occupies that side. S.pickName[i] is NEVER cleared here;
+// it's a permanent record of what was called, used to detect an "impossible" pick even after
+// S.picks[i] itself has been invalidated. Runs after every pick()/clearPick() AND after every
+// live-data ingest(), so a stale pick can't silently get reinterpreted as a different team.
+// Every call site that writes S.picks/S.pickName must invalidate afterward — currently only
+// pick(), clearPick(), and this function's own write below do so.
+// Single forward pass is sufficient: TREE feeder indices are always < their parent match
+// index, so by the time index i is checked, any invalidation its feeders needed has already
+// happened earlier in this same pass — no index ever needs re-checking after i advances.
+function invalidateStale(){
+ for(let i=16;i<32;i++){if(S.picks[i]===null)continue;
+  const n=namesUnder(i,decMerged);if(n[S.picks[i]]!==S.pickName[i])S.picks[i]=null;}
+}
 function pick(idx,side){if(S.results[idx]!==null)return false;
  const nm=namesUnder(idx,decMerged);if(nm[side]===null)return false;
  S.picks[idx]=side;S.pickName[idx]=nm[side];
- let ch=true;while(ch){ch=false;for(let i=16;i<32;i++){if(S.picks[i]===null)continue;
-  const n=namesUnder(i,decMerged);if(n[S.picks[i]]!==S.pickName[i]){S.picks[i]=null;S.pickName[i]=null;ch=true;}}}
+ invalidateStale();
  emit();return true;}
 function clearPick(idx){if(S.picks[idx]===null)return;S.picks[idx]=null;S.pickName[idx]=null;
- let ch=true;while(ch){ch=false;for(let i=16;i<32;i++){if(S.picks[i]===null)continue;
-  const n=namesUnder(i,decMerged);if(n[S.picks[i]]!==S.pickName[i]){S.picks[i]=null;S.pickName[i]=null;ch=true;}}}
+ invalidateStale();
  emit();}
 
 function shareState(){let picks=0,missing=[];
@@ -293,16 +364,14 @@ function shareURL(name){const{maskCount,picks}=shareState();
  return location.origin+location.pathname+packURL(maskCount,picks,name);}
 
 function evaluate(){const v=S.view;if(!v)return null;
- const pickTeam=i=>namesUnder(i,decBits(v.picks))[bit(v.picks,i)];
- const dead=eliminated();let pts=0,max=0;const rows=[];
- for(let i=0;i<32;i++){const w=WEIGHT(i),masked=isMasked(i,v.maskCount),real=S.results[i];
-  const realTeam=real===null?null:namesUnder(i,decReal)[real];const mine=pickTeam(i);let st;
-  if(masked){st='masked';}
-  else if(real!==null){if(realTeam===mine){st='correct';pts+=w;max+=w;}else st='wrong';}
-  else if(mine&&dead.has(mine)){st='wrong';} // already eliminated — certain to fail, no need to wait
-  else{st='pending';if(mine)max+=w;}
-  rows.push({idx:i,st,mine,realTeam,w,masked});}
- return{pts,max,rows,pickTeam,name:v.name,dead};}
+ let pts=0,max=0;const rows=[];
+ for(let i=0;i<32;i++){const w=WEIGHT(i),cm=cardModel(i,v);let st;
+  if(cm.pick.state==='no-pick')st='masked';
+  else if(cm.pick.state==='correct'){st='correct';pts+=w;max+=w;}
+  else if(cm.pick.state==='wrong'||cm.pick.state==='impossible')st='wrong';
+  else{st='pending';max+=w;}
+  rows.push({idx:i,st,mine:cm.pick.name||null,w,cm});}
+ return{pts,max,rows,name:v.name};}
 
 let cb=null;const emit=()=>cb&&cb();
 async function boot(){S.view=parseHash(location.hash);emit();
@@ -314,7 +383,7 @@ if(typeof window!=='undefined')window.addEventListener('hashchange',()=>{S.view=
 
 return{S,TREE,WEIGHT,ROUND,ROUND_NAMES,flag,short,scoreParts,kickoffParts,namesUnder,decReal,decMerged,decMaskedBits,decBits,
  pick,clearPick,shareState,shareURL,evaluate,parseHash,packURL,boot,SNAPSHOT_DATE,isMasked,chronoRank,feederChain,immediateFeeders,
- teamTopScorer,teamTopScorers,teamRecord,
+ teamTopScorer,teamTopScorers,teamRecord,cardModel,
  onUpdate:f=>{cb=f;},winnerSide};
 })();
 if(typeof module!=='undefined')module.exports=WC;
@@ -330,44 +399,48 @@ const CH=[["32","Round of 32",[...Array(16).keys()],"1 pt"],["16","Round of 16",
 const queue=()=>{const q=[];for(let i=0;i<32;i++)if(WC.S.results[i]===null&&WC.S.picks[i]===null)q.push(i);return q;};
 const stale=()=>WC.S.stale?'<div class="stale">Live feed unreachable — snapshot of '+WC.SNAPSHOT_DATE+'</div>':'';
 
+// Pick-state → bottom-bar glyph/color/tooltip. Colors reuse the app's existing palette:
+// round-tint (no-pick/made — neither is a verdict), amber (needed/unknowable — nothing
+// scored yet), green (correct), red (wrong/impossible — same red, different glyph).
+const PICK_UI={
+ 'no-pick':{glyph:'○',cls:'pb-round',tip:'No prediction made'},
+ 'needed':{glyph:'»',cls:'pb-needed',tip:'Tap to pick a winner'},
+ 'unknowable':{glyph:'…',cls:'pb-needed',tip:'Not decided yet'},
+ 'made':{glyph:'●',cls:'pb-round',tip:'Your pick — not yet decided'},
+ 'correct':{glyph:'✓',cls:'pb-cor',tip:'Correct'},
+ 'wrong':{glyph:'✕',cls:'pb-wro',tip:'Wrong'},
+ 'impossible':{glyph:'!',cls:'pb-wro',tip:'Eliminated'},
+};
+function pickBarHTML(pick){
+ const ui=PICK_UI[pick.state];
+ let content;
+ if(pick.state==='needed')content='<span class="pbfl"></span><span class="pbtxt">Choose the victor!</span>';
+ else if(pick.state==='no-pick'||pick.state==='unknowable')content='<span class="pbfl"></span><span class="pbtxt"></span>';
+ else content='<span class="pbfl">'+(pick.name?WC.flag(pick.name):'')+'</span><span class="pbnm">'+esc(pick.name||'—')+'</span>';
+ return '<div class="pickbar '+ui.cls+'" title="'+esc(ui.tip)+'">'+content+'<span class="pbg">'+ui.glyph+'</span></div>';
+}
+
 function cardHTML(i,cmp){
+ const cm=cmp?cmp.rows[i].cm:WC.cardModel(i,null);
  const m=WC.S.feed[i],sp=WC.scoreParts(m),done=WC.S.results[i]!==null;
- const dec=cmp?WC.decMaskedBits(WC.S.view):WC.decMerged;
- const names=WC.namesUnder(i,dec);const row=cmp?cmp.rows[i]:null;
+ const names=cm.names;
  const editable=!cmp&&!done&&names[0]&&names[1];
- const flippable=cmp&&row&&row.st==='wrong';
  const hasFeeders=i>=16;
- const selectable=cmp&&(flippable||hasFeeders);
+ const selectable=cmp&&hasFeeders;
  let cls='c rd'+WC.ROUND(i)+(i===31?' fin':'')+(i===30?' third':'')+(done?' settled':'');
  if(feederSet.has(i))cls+=' feeder';
  if(selectedIndex===i)cls+=' selected';
 
- if(flippable&&selectedIndex===i){
-  const pick=row.mine;
-  return '<button class="'+cls+'" data-flip="'+i+'">'
-   +'<div class="strip mk-flip">?</div>'
-   +'<div class="flipbody"><span class="pfl">'+(pick?WC.flag(pick):'')+'</span>'
-   +'<span class="pnm">'+esc(pick||'—')+'</span></div></button>';
- }
-
- const mine=row?row.mine:(WC.S.picks[i]!==null?names[WC.S.picks[i]]:null);
+ const rowCls={won:'win',lost:'lose',predicted:'predicted'};
  let t='';
- for(const s of[0,1]){const n=names[s];let tc='';
-  if(n&&mine!=null)tc=n===mine?(done?'win':'pick'):'fade';
-  else if(done)tc=s===WC.S.results[i]?'win':'lose';
+ for(const s of[0,1]){const n=names[s];const tc=rowCls[s===0?cm.r0:cm.r1]||'';
   let scoreTxt='',scCls='sc';
   if(done&&sp){scoreTxt=(s===0?sp.a:sp.b)+(sp.p?' ('+sp.p[s]+')':'');}
   else if(!done){const kp=WC.kickoffParts(m);if(kp){scoreTxt=s===0?kp.date:kp.time;scCls='sc when';}}
   t+='<span class="t '+tc+'"><span>'+(n?WC.flag(n):'')+'</span><span class="nm">'+esc(n||'—')+'</span>'
    +'<span class="'+scCls+'">'+scoreTxt+'</span></span>';}
- let strip='<div class="strip"></div>';
- if(row&&row.st==='correct')strip='<div class="strip mk-cor">✓</div>';
- else if(row&&row.st==='wrong')strip='<div class="strip mk-wro">✕</div>';
- else if(row&&row.st==='masked')strip='<div class="strip mk-known" title="Already known when this bracket was shared — not part of the score">•</div>';
- else if(!cmp&&editable&&WC.S.picks[i]!==null)strip='<div class="strip mk-chosen">➤</div>';
- else if(!cmp&&editable)strip='<div class="strip mk-needed">⚖</div>';
 
- const front=strip+'<div class="body">'+t+'</div>';
+ const front='<div class="body">'+t+'</div>'+pickBarHTML(cm.pick);
 
  if(editable)return '<button class="'+cls+'" data-open="'+i+'">'+front+'</button>';
  if(selectable)return '<button class="'+cls+'" data-flip="'+i+'">'+front+'</button>';
@@ -396,9 +469,9 @@ function render(){
  const dec=cmp?WC.decMaskedBits(S.view):WC.decMerged;
  let h=stale()+'<div class="wrap"><header class="mast"><div class="left">';
  if(cmp)h+='<h1>'+esc(cmp.name||'A bracket')+'<em>.</em></h1>'
-  +'<span class="score">'+cmp.pts+'<small> pts · max '+cmp.max+(cmp.rows.some(r=>r.st==='pending')?' · in play':'')+'</small></span>';
- else h+='<h1>The Knockout<em>.</em></h1><span class="sub">World Cup 2026 · <b>'+done+'</b> decided of 32 · <b>'
-  +missing+'</b> yours to call'+(missing===0?' · <b>tap Share</b>':'')+'</span>';
+  +'<span class="sub"><b>'+cmp.pts+'</b> pts · max <b>'+cmp.max+'</b>'+(cmp.rows.some(r=>r.st==='pending')?' · in play':'')+'</span>';
+ else h+='<h1>The Knockout<em>.</em></h1><span class="sub"><b>'+done+'</b> of 32 decided · <b>'
+  +missing+'</b> to call'+(missing===0?' · <b>tap Share</b>':'')+'</span>';
  h+='</div>'+fabHTML(cmp,missing)+'</header>';
  const byChrono=arr=>[...arr].sort((a,b)=>WC.chronoRank[a]-WC.chronoRank[b]);
  const GROUPS=[
@@ -459,9 +532,11 @@ function renderFlow(){
   scorerTRs+='<tr class="fscore"><td class="sideL">'+(l?'<span class="scoreCell sideL"><span class="sname">'+esc(l.name)+'</span><span class="sgoal">'+l.goals+'</span></span>':'')+'</td>'
    +'<td class="sideR divider">'+(r?'<span class="scoreCell sideR"><span class="sgoal">'+r.goals+'</span><span class="sname">'+esc(r.name)+'</span></span>':'')+'</td></tr>';
  }
+ const curPick=WC.S.picks[i]!==null?WC.S.pickName[i]:null;
  app.innerHTML='<div class="flow"><div class="fprog"><i style="width:'+(single?100:(n-1)/total*100)+'%"></i></div>'
   +'<div class="fhead"><span>'+rn+' · '+WC.WEIGHT(i)+' points · '+prompt+'</span>'
   +'<button class="x" id="fx" aria-label="Close">✕</button></div>'
+  +(curPick?'<div class="fcur">Currently picked: '+WC.flag(curPick)+' '+esc(curPick)+'</div>':'')
   +'<div class="fstage" id="fstg"><div class="fhalf fhalf-l"></div><div class="fhalf fhalf-r"></div>'
   +'<table class="fsplit" id="fc"><colgroup><col><col></colgroup><tbody>'
   +'<tr class="fhero"><td class="fl sideL">'+WC.flag(names[0])+'</td>'
