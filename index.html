@@ -350,12 +350,11 @@ function cardHTML(i,cmp){
    +'<span class="pnm">'+esc(pick||'—')+'</span></div></button>';
  }
 
+ const mine=row?row.mine:(WC.S.picks[i]!==null?names[WC.S.picks[i]]:null);
  let t='';
  for(const s of[0,1]){const n=names[s];let tc='';
-  if(done){tc=s===WC.S.results[i]?'win':'lose';
-   if(!cmp&&WC.S.picks[i]!==null)tc=s===WC.S.picks[i]?'win':'fade';
-   else if(cmp&&row&&row.st==='wrong')tc=n===row.mine?'win':'fade';}
-  else if(!cmp&&WC.S.picks[i]!==null)tc=(WC.S.picks[i]===s)?'pick':'fade';
+  if(n&&mine!=null)tc=n===mine?(done?'win':'pick'):'fade';
+  else if(done)tc=s===WC.S.results[i]?'win':'lose';
   let scoreTxt='',scCls='sc';
   if(done&&sp){scoreTxt=(s===0?sp.a:sp.b)+(sp.p?' ('+sp.p[s]+')':'');}
   else if(!done){const kp=WC.kickoffParts(m);if(kp){scoreTxt=s===0?kp.date:kp.time;scCls='sc when';}}
